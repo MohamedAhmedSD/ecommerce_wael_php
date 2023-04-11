@@ -11,7 +11,9 @@ $username = filterRequest("username");
 $password = sha1("password"); // use => sha1
 $email = filterRequest("email");
 $phone = filterRequest("phone");
-$veryfiycode = 0;
+// $veryfiycode = 0;
+$verfiycode     = rand(10000 , 99999); // to make random number from 5 fields
+
 
 
 // check if there any account on db
@@ -41,6 +43,9 @@ echo printFailure("phone or email used");
         "users_phone" => $phone,
         "Users_verifycode" => "0",
     );
+    // if it new user send email with verifycode
+    sendEmail($email , "Verfiy Code Ecommerce" , "Verfiy Code $verfiycode") ; 
+
     // you should call insert function 
     // it take => table name, array of data to add to table
     insertData("users",$data);
