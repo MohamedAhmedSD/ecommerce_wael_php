@@ -37,9 +37,11 @@ $count = $stmt->rowCount();
 if ($count > 0) {
     // back json to use it on flutter
     echo json_encode(array("status" => "success"));
-    print_r($stmt);
+    // when you use => print_r => not be able recive data on flutter
+    // because mixed data type json & others
+    // print_r($stmt);
 } else {
-    echo json_encode(array("status" => 'fail'));
+    echo json_encode(array("status" => 'fail sign up'));
 }
 
 

@@ -3,6 +3,7 @@
 
 include "connect.php";
 
+// function sendEmail($to, $title, $body) { }
 sendEmail("btoox8python@gmail.com", "hi","from function");
 
 
