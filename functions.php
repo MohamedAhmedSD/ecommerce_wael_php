@@ -4,12 +4,16 @@
 //  Copyright Reserved Wael Wael Abo Hamza (Course Ecommerce)
 // ==========================================================
 
+//* 1.
 define("MB", 1048576);
+
+//* 2.
 
 function filterRequest($requestname)
 {
   return  htmlspecialchars(strip_tags($_POST[$requestname]));
 }
+//* 3.
 
 function getAllData($table, $where = null, $values = null)
 {
@@ -26,6 +30,8 @@ function getAllData($table, $where = null, $values = null)
     }
     return $count;
 }
+
+//* 4.
 
 function insertData($table, $data, $json = true)
 {
@@ -52,6 +58,23 @@ function insertData($table, $data, $json = true)
     return $count;
 }
 
+/*
+ * This PHP code defines a function named "insertData" that takes in three parameters - $table, $data, and $json (where $json is set to true by default).
+
+The function first globalizes the $con variable, which is assumed to be a PDO object representing a connection to a database.
+
+The function then uses a foreach loop to convert keys in the $data array to named placeholders in the form of :key, and stores them in an $ins array. This array is then imploded by commas to make it into a string.
+
+The function further constructs an SQL query by imploding the keys in the $data array by a comma, and concatenating them with the previously created $ins array, which are separated by commas and enclosed in parentheses.
+
+The function then prepares and executes the SQL statement using the $con PDO object. Inside the loop, it binds each value from the $data array to its corresponding named parameter in the prepared statement.
+
+The function then counts the number of rows affected by the insertion by calling the PDO method rowCount.
+
+Finally, an if statement is used to check the value of $json. If it's true and the number of affected rows is greater than zero, the function outputs a success JSON message. Otherwise, it outputs a failure message. At the end, the function returns the number of affected rows. 
+ */
+//* 5.
+
 
 function updateData($table, $data, $where, $json = true)
 {
@@ -77,6 +100,7 @@ function updateData($table, $data, $where, $json = true)
     }
     return $count;
 }
+//* 6.
 
 function deleteData($table, $where, $json = true)
 {
@@ -93,6 +117,8 @@ function deleteData($table, $where, $json = true)
     }
     return $count;
 }
+
+//* 7.
 
 function imageUpload($imageRequest)
 {
@@ -119,6 +145,7 @@ function imageUpload($imageRequest)
   }
 }
 
+//* 8.
 
 
 function deleteFile($dir, $imagename)
@@ -127,6 +154,8 @@ function deleteFile($dir, $imagename)
         unlink($dir . "/" . $imagename);
     }
 }
+
+//* 9.
 
 function checkAuthenticate()
 {
@@ -145,10 +174,15 @@ function checkAuthenticate()
    
 }
 
+//* 10.
+
  // save your time, by what json we need when failed
  function printFailure($message = "none"){
     echo json_encode(array("status" => "failure", "message" => $message));
 }
+
+
+//* 11.
 
 // send email
 // what we need to do it, by using => mail() function
